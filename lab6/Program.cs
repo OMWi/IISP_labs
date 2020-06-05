@@ -29,129 +29,15 @@ namespace lab6
         }
     }
 
-    public interface IStudentable<T>
+    public interface IStudent
     {
         string GetInfo();
         void Say();
-        bool Equal(T obj);
-    }
-
-    class Student : Human, IStudentable<Student>
+    } 
+    
+    public class Program
     {
-        public override void Say()
-        {
-            Console.WriteLine("I want offset");
-        }
-        private List<Exam> examSchedule = new List<Exam>();
-        public List<Exam> ExamSchedule
-        {
-            get
-            {
-                return examSchedule;
-            }
-            set
-            {
-                examSchedule = value;
-            }
-        }
-        public Student() { }
-        public Student(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday)
-        {
-            this.examSchedule = examSchedule;
-        }
-        public string GetExamSchedule()
-        {
-            StringBuilder schedule = new StringBuilder();
-            if (examSchedule.Count != 0) schedule.AppendLine("Даты экзаменов :");
-            for (int i = 0; i < examSchedule.Count; i++)
-            {
-                schedule.Append(examSchedule[i].time);
-                schedule.Append('\t');
-                schedule.Append(examSchedule[i].title);
-                schedule.AppendLine();
-            }
-            return schedule.ToString();
-        }
-        public override string GetInfo()
-        {
-            StringBuilder info = new StringBuilder();
-            info.Append(base.GetInfo());
-            info.Append(GetExamSchedule());
-            return info.ToString();
-        }
-        public bool Equal(Student student)
-        {
-            if (student.Name != Name) return false;
-            if (student.Sex != Sex) return false;
-            if (student.Birthday != Birthday) return false;
-            return true;
-        }
-    }
-
-    class StudentIitp : Student, IStudentable<Student>
-    {
-        public StudentIitp() { }
-        public StudentIitp(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.МГиА &&
-                    ExamSchedule[i].title != Lessons.ММА && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Программирование)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    class StudentPoit : Student, IStudentable<Student>
-    {
-        public StudentPoit() { }
-        public StudentPoit(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.Математика && ExamSchedule[i].title != Lessons.ДМ &&
-                    ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Физика)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    class StudentVmsis : Student, IStudentable<Student>
-    {
-        public StudentVmsis() { }
-        public StudentVmsis(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.Математика && ExamSchedule[i].title != Lessons.АиЛОВТ &&
-                    ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Физика)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    class Program
-    {
-        static List<Exam> GetIitpSchedule()
+        public static List<Exam> GetIitpSchedule()
         {
             List<Exam> schedule = new List<Exam>();
             DateTime time = new DateTime(2020, 6, 25, 8, 0, 0);
@@ -163,7 +49,7 @@ namespace lab6
             return schedule;
         }
 
-        static List<Exam> GetPoitSchedule()
+        public static List<Exam> GetPoitSchedule()
         {
             List<Exam> schedule = new List<Exam>();
             DateTime time = new DateTime(2020, 6, 29, 11, 0, 0);
@@ -172,7 +58,7 @@ namespace lab6
             return schedule;
         }
 
-        static List<Exam> GetVmsisSchedule()
+        public static List<Exam> GetVmsisSchedule()
         {
             List<Exam> schedule = new List<Exam>();
             DateTime time = new DateTime(2020, 6, 13, 11, 0, 0);
@@ -183,7 +69,7 @@ namespace lab6
 
         static bool Compare(Student st1, Student st2)
         {
-            return st1.Equal(st2);
+            return st1.Equals(st2);
         }
 
         static bool KeyIsCorrect(char key)

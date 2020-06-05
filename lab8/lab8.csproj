@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4723648F-6D7E-4010-ADED-8CA8876CF600}</ProjectGuid>
+    <ProjectGuid>{92CC8AEA-FB43-426E-AC87-9413956E0F2E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lab5</RootNamespace>
-    <AssemblyName>lab5</AssemblyName>
+    <RootNamespace>lab8</RootNamespace>
+    <AssemblyName>lab8</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Prog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="StudentIitp.cs" />
-    <Compile Include="StudentPoit.cs" />
-    <Compile Include="StudentVmsis.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -57,6 +54,10 @@
     <ProjectReference Include="..\lab3\lab3.csproj">
       <Project>{0a0cf046-7968-4fa2-bdb9-ab18e3bf31a7}</Project>
       <Name>lab3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lab6\lab6.csproj">
+      <Project>{52465fe4-91be-4ef1-a9ff-6cb892749fb5}</Project>
+      <Name>lab6</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

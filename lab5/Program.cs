@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using lab3;
 
 namespace lab5
 {
@@ -27,114 +25,8 @@ namespace lab5
             this.title = title;
             this.time = time;
         }
-    }
-
-    class Student : Human
-    {
-        public override void Say()
-        {
-            Console.WriteLine("I want offset");
-        }
-        private List<Exam> examSchedule = new List<Exam>();
-        public List<Exam> ExamSchedule
-        {
-            get
-            {
-                return examSchedule;
-            }
-            set
-            {
-                examSchedule = value;
-            }
-        }
-        public Student() { }
-        public Student(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday)
-        {
-            this.examSchedule = examSchedule;
-        }
-        public string GetExamSchedule()
-        {
-            StringBuilder schedule = new StringBuilder();
-            if (examSchedule.Count != 0) schedule.AppendLine("Даты экзаменов :");
-            for (int i = 0; i < examSchedule.Count; i++)
-            {
-                schedule.Append(examSchedule[i].time);
-                schedule.Append('\t');
-                schedule.Append(examSchedule[i].title);
-                schedule.AppendLine();
-            }
-            return schedule.ToString();
-        }
-        public override string GetInfo()
-        {
-            StringBuilder info = new StringBuilder();
-            info.Append(base.GetInfo());
-            info.Append(GetExamSchedule());
-            return info.ToString();
-        }
-    }
-
-    class StudentIitp : Student
-    {
-        public StudentIitp() { }
-        public StudentIitp(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.МГиА &&
-                    ExamSchedule[i].title != Lessons.ММА && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Программирование)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    class StudentPoit : Student
-    {
-        public StudentPoit() { }
-        public StudentPoit(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.Математика && ExamSchedule[i].title != Lessons.ДМ &&
-                    ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Физика)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
-    class StudentVmsis : Student
-    {
-        public StudentVmsis() { }
-        public StudentVmsis(string name, string sex, DateTime birthday, List<Exam> examSchedule)
-            : base(name, sex, birthday, examSchedule) { }
-        public bool LessonsAreCorrect()
-        {
-            for (int i = 0; i < ExamSchedule.Count; i++)
-            {
-                if (ExamSchedule[i].title != Lessons.Математика && ExamSchedule[i].title != Lessons.АиЛОВТ &&
-                    ExamSchedule[i].title != Lessons.ИнЯз && ExamSchedule[i].title != Lessons.ОАиП &&
-                    ExamSchedule[i].title != Lessons.Физика)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-    }
-
+    }        
+    
     class Program
     {
         static List<Exam> GetIitpSchedule()
