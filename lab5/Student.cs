@@ -8,10 +8,6 @@ namespace lab5
 {
     class Student : Human
     {
-        public override void Say()
-        {
-            Console.WriteLine("I want offset");
-        }
         private List<Exam> examSchedule = new List<Exam>();
         public List<Exam> ExamSchedule
         {

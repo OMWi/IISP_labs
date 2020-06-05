@@ -173,10 +173,6 @@ namespace lab3
         {
             return GetAge() > age;
         }
-        public virtual void Say()
-        {
-            Console.WriteLine("Says something");
-        }
         public virtual string GetInfo()
         {
             StringBuilder info = new StringBuilder();
