@@ -18,10 +18,6 @@ namespace lab8
             DataGot?.Invoke(info.ToString());
             return info.ToString();
         }
-        public override void Say()
-        {
-            Console.WriteLine("I want offset");
-        }
         private List<Exam> examSchedule = new List<Exam>();
         public List<Exam> ExamSchedule
         {
