@@ -32,7 +32,6 @@ namespace lab6
     public interface IStudent
     {
         string GetInfo();
-        void Say();
     } 
     
     public class Program

@@ -8,14 +8,42 @@ namespace lab8
 {
     class Student : Human, IStudent, IEquatable<Student>
     {
-        public delegate void Del1(string str);
-        public event Del1 DataGot;   
+        public delegate void Handler();
+        public event Handler FOpenError;
+        public event Handler FOpen;
+        
+        public void ReadFile(string filePath, string fileName)
+        {
+            string[] arr = new string[3];
+            try
+            {
+                using (System.IO.StreamReader file = new System.IO.StreamReader(filePath + fileName))
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        arr[i] = file.ReadLine();
+                    }
+                    file.Close();
+                }
+            }
+            catch (Exception)
+            {
+                FOpenError?.Invoke();
+                return;
+            }
+            Name = arr[0];
+            Sex = arr[1];
+            DateTime.TryParse(arr[2], out DateTime birth);
+            Birthday = birth;
+            FOpen?.Invoke();
+        }
+
+
         public override string GetInfo()
         {
             StringBuilder info = new StringBuilder();
             info.Append(base.GetInfo());
             info.Append(GetExamSchedule());
-            DataGot?.Invoke(info.ToString());
             return info.ToString();
         }
         private List<Exam> examSchedule = new List<Exam>();
@@ -49,7 +77,6 @@ namespace lab8
             }
             return schedule.ToString();
         }
-        
         public bool Equals(Student student)
         {
             if (student.Name != Name) return false;
