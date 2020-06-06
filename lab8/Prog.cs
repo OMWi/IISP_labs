@@ -10,26 +10,7 @@ using System.Threading;
 namespace lab8
 {
     class Prog
-    {
-
-        static string GetName()
-        {
-            Console.Clear();
-            Console.Write("Имя без расширения:");
-            string name = Console.ReadLine() + ".txt";
-            Console.WriteLine("Имя файла установлено");
-            return name;
-        }
-
-        static string GetPath()
-        {
-            Console.Clear();
-            Console.Write("Путь к файлу:");
-            string path = Console.ReadLine();
-            Console.WriteLine("Путь установлен");
-            return path;
-        }
-
+    {        
         static void Main()
         {
             string path = "D:\\Projects\\isp\\slns\\lab8\\";
@@ -58,6 +39,24 @@ namespace lab8
 
             st1.ReadFile(path, name);
             Console.ReadKey(true);
+        }
+
+        static string GetName()
+        {
+            Console.Clear();
+            Console.Write("Имя без расширения:");
+            string name = Console.ReadLine() + ".txt";
+            Console.WriteLine("Имя файла установлено");
+            return name;
+        }
+
+        static string GetPath()
+        {
+            Console.Clear();
+            Console.Write("Путь к файлу:");
+            string path = Console.ReadLine();
+            Console.WriteLine("Путь установлен");
+            return path;
         }
     }
 }
